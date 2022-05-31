@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.6.7</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <groupId>com.example</groupId>
+    <artifactId>bookmeg</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>bookmeg</name>
+    <description>Demo project for Spring Boot</description>
+
+    <properties>
+        <java.version>17</java.version>
+
+        <deps.bootstrap.version>5.1.3</deps.bootstrap.version>
+        <deps.jquery.version>3.6.0</deps.jquery.version>
+        <deps.bootstrap-select.version>1.13.18</deps.bootstrap-select.version>
+        <deps.thymeleaf-layout-dialect.version>3.1.0</deps.thymeleaf-layout-dialect.version>
+        <deps.spring-boot-starter-thymeleaf.version>2.3.12.RELEASE</deps.spring-boot-starter-thymeleaf.version>
+
+        <deps.spring-webmvc.version>5.3.16</deps.spring-webmvc.version>
+        <deps.spring-webm.version>5.3.16</deps.spring-webm.version>
+
+        <deps.spring-jdbc.version>5.3.19</deps.spring-jdbc.version>
+        <deps.hibernate-entitymanager.version>5.6.8.Final</deps.hibernate-entitymanager.version>
+        <deps.hibernate-core.version>5.6.8.Final</deps.hibernate-core.version>
+        <deps.mysql-connector-java.version>8.0.28</deps.mysql-connector-java.version>
+        <deps.jta.version>1.1</deps.jta.version>
+        <deps.commons-dbcp2.version>2.9.0</deps.commons-dbcp2.version>
+
+        <deps.tomcat-dbcp.version>7.0.55</deps.tomcat-dbcp.version>
+        <deps.tomcat-embed-jasper.version>9.0.44</deps.tomcat-embed-jasper.version>
+
+        <deps.spring-security-oauth2-authorization-server.version>0.2.0</deps.spring-security-oauth2-authorization-server.version>
+        <!--
+         <deps.jaxb-api.version>2.3.1</deps.jaxb-api.version>
+        <deps.jaxb-runtime.version>2.3.1</deps.jaxb-runtime.version>
+         <deps.spring-tx.version>5.3.19</deps.spring-tx.version>
+        -->
+
+        <deps.spring-boot-maven-plugin.version>2.6.4</deps.spring-boot-maven-plugin.version>
+
+    </properties>
+
+    <dependencies>
+
+        <!-- javax
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>${deps.jaxb-api.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>${deps.jaxb-runtime.version}</version>
+        </dependency>
+         javax -->
+
+        <!-- html thymeleaf jquery bootstrap -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <version>${deps.spring-boot-starter-thymeleaf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>nz.net.ultraq.thymeleaf</groupId>
+            <artifactId>thymeleaf-layout-dialect</artifactId>
+            <version>${deps.thymeleaf-layout-dialect.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity5</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>${deps.bootstrap.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery</artifactId>
+            <version>${deps.jquery.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap-select</artifactId>
+            <version>${deps.bootstrap-select.version}</version>
+        </dependency>
+        <!-- html thymeleaf jquery bootstrap -->
+
+        <!-- spring web -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${deps.spring-webmvc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${deps.spring-webm.version}</version>
+        </dependency>
+        <!-- spring web -->
+
+        <!-- lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!-- lombok -->
+
+        <!-- SQL Service-->
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.sourceforge.jtds</groupId>
+            <artifactId>jtds</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <!-- SQL Service-->
+        <!-- hibernate -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${deps.hibernate-entitymanager.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${deps.hibernate-core.version}</version>
+            <type>pom</type>
+        </dependency>
+        <!-- hibernate -->
+        <!--cache -->
+
+        <!--cache -->
+        <!--mysql jdbc-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${deps.mysql-connector-java.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${deps.spring-jdbc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <!--mysql jdbc-->
+        <!--transaction-->
+        <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>jta</artifactId>
+            <version>${deps.jta.version}</version>
+        </dependency>
+        <!--transaction-->
+        <!-- Apache Common DBCP2  -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+            <version>${deps.commons-dbcp2.version}</version>
+        </dependency>
+        <!-- Apache Common DBCP2  -->
+
+        <!--tomcat-->
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-dbcp</artifactId>
+            <version>${deps.tomcat-dbcp.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <version>${deps.tomcat-embed-jasper.version}</version>
+            <scope>provided</scope>
+        </dependency>
+       <!-- tomcat-->
+
+        <!--rest-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-rest</artifactId>
+        </dependency>
+        <!--rest-->
+
+        <!--security
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-oauth2-authorization-server</artifactId>
+            <version>${deps.spring-security-oauth2-authorization-server.version}</version>
+        </dependency>
+        security-->
+
+
+        <!--configuration-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!--configuration-->
+
+        <!--test-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+        </dependency>
+        <!--test-->
+
+    </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${deps.spring-boot-maven-plugin.version}</version>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.project.lombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

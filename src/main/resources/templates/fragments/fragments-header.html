@@ -1,0 +1,30 @@
+<header data-th-fragment="header-content" class="site-header sticky-top py-1" xmlns="http://www.w3.org/1999/html">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#locales").change(function () {
+                var selectedOption = $('#locales').val();
+                if (selectedOption != ''){
+                    window.location.replace('?lang=' + selectedOption);
+                }
+            });
+        });
+    </script>
+    <nav class="container d-flex flex-column flex-md-row justify-content-between">
+        <a class="py-2" href="/index" aria-label="Product">
+            <a href="/index" class="navbar-brand">BookMeg</a>
+        </a>
+        <a th:text="#{a.library}" class="py-2 d-none d-md-inline-block" href="/library"></a>
+        <a th:text="#{a.category}" class="py-2 d-none d-md-inline-block" href="/category"></a>
+        <a th:text="#{a.author}" class="py-2 d-none d-md-inline-block" href="/author"></a>
+        <a th:text="#{a.login}" class="py-2 d-none d-md-inline-block" href="/login"></a>
+        <a th:text="#{a.basket}" class="py-2 d-none d-md-inline-block" href="/basket"></a>
+            <select id="locales" class="shadow-s p-2 mb-4 bg-white rounded" style="border: none">
+                <option value="">locale</option>
+                <option th:text="#{Lang.en}" value="en"></option>
+                <option th:text="#{Lang.de}" value="de"></option>
+                <option th:text="#{Lang.fr}" value="fr"></option>
+            </select>
+    </nav>
+</header>

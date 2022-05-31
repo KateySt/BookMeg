@@ -1,0 +1,40 @@
+<ul id="sidebar-menu" class="main_menu_side hidden-print main_menu" data-th-fragment="sidebar-menu">
+    <div class="menu_section">
+        <h3>Меню</h3>
+        <ul class="nav side-menu">
+            <!--<span class="label label-success pull-right">new</span>-->
+            <li><a><i class="fa fa-tasks"></i>Журнал заявок<span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li id="menuSearchAll"><a data-th-href="@{/search-all}">Общий</a></li>
+                    <li><a data-th-href="@{/search-emission}">Эмиссия</a></li>
+                    <li><a data-th-href="@{/search-emission/hold}">Холды</a></li>
+                    <li><a data-th-href="@{/search-acquiring/pos}">Эквайринг pos</a></li>
+                    <li><a data-th-href="@{/search-acquiring/inet}">Эквайринг inet</a></li>
+                    <li><a data-th-href="@{/search-acquiring/atm}">Эквайринг atm</a></li>
+                    <li><a data-th-href="@{/search-acquiring/pm}">Эквайринг pm</a></li>
+                </ul>
+            </li>
+            <li id="menuFraud" class="clickMe"><a data-th-href="@{/search-fraud-report}"><i class="fa fa-low-vision"></i>Fraud Report</a></li>
+            <li id="menuAutodisput"><a data-th-href="@{/search-auto-dispute}"><i class="fa fa-audio-description"></i>Автодиспуты</a></li>
+        </ul>
+    </div>
+    <div class="menu_section">
+        <!--<h3>Разное</h3>-->
+        <!--<ul class="nav side-menu">-->
+        <!--<li><a href="javascript:void(0)"><i class="fa fa-book"></i>Инструкция</a></li>-->
+        <!--</ul>-->
+
+        <!-- day/night toggle mode -->
+        <!--<h3>Режим</h3>
+        <ul class="nav side-menu">
+            <li>
+                <span class="toggle-box">
+                    <input type="checkbox" disabled id="toggle-box-checkbox"/>
+                    <label for="toggle-box-checkbox" class="toggle-box-label-left"></label>
+                    <label for="toggle-box-checkbox" class="toggle-box-label"></label>
+                </span>
+            </li>
+        </ul>-->
+    </div>
+
+</ul>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en"
+      data-layout-decorate="~{fragments/layout}"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>BookMeg</title>
+
+</head>
+<body>
+<main data-layout-fragment="content">
+    <h1 class="mb-3 m-3">Login</h1>
+    <form action="login" method="post">
+        <div class="mb-3 m-3">
+            <label class="form-label">Name :</label>
+            <input type="text" name="nameUser" placeholder="Input name" class="form-control">
+        </div>
+        <div class="mb-3 m-3">
+            <label class="form-label">Phone :</label>
+            <input type="text" name="userPhone" placeholder="Input phone" class="form-control">
+        </div>
+        <div class="mb-3 m-3">
+            <label for="exampleInputEmail1" class="form-label">Email address :</label>
+            <input type="email"  name="userEmail" placeholder="someone@example.com" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div><!--email-->
+        <div class="mb-3 m-3">
+            <label for="exampleInputPassword1" class="form-label">Password :</label>
+            <input type="password" name="userPassword" placeholder="**********" class="form-control" id="exampleInputPassword1">
+        </div><!--password-->
+        <button type="submit" class="btn btn-primary m-3">Submit</button>
+    </form>
+</main>
+</body>
+</html>
