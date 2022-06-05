@@ -30,4 +30,9 @@ public class Image implements Serializable {
     public Image(String img){
         this.img=img;
     }
+
+    @Override
+    public String toString() {
+        return  img ;
+    }
 }

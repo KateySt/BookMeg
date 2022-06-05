@@ -33,5 +33,8 @@ public class Author implements Serializable{
         this.nameAuthor=nameAuthor;
         this.surnameAuthor=surnameAuthor;
     }
-
+    @Override
+    public String toString() {
+        return  nameAuthor +" "+ surnameAuthor;
+    }
 }

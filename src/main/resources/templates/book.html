@@ -15,6 +15,14 @@
         <p th:text="${books_el.costBook}" class="mb-3 m-3"></p>
         <p th:text="${books_el.numPages}" class="mb-3 m-3"></p>
         <p th:text="${books_el.produceYear}" class="mb-3 m-3"></p>
+
+        <p th:text="${books_el.authors}" class="mb-3 m-3"></p>
+        <p th:text="${books_el.languages}" class="mb-3 m-3"></p>
+        <p th:text="${books_el.subAndCategories}" class="mb-3 m-3"></p>
+        <p th:text="${books_el.vendors}" class="mb-3 m-3"></p>
+        <p th:text="${books_el.images}" class="mb-3 m-3"></p>
+
+
         <a th:href="'/library/'+${books_el.bookId}+'/edit'" class="btn btn-warning mb-3 m-3">Edit</a>
         <a th:href="'/library/'+${books_el.bookId}+'/remove'" class="btn btn-warning mb-3 m-3">Delete</a>
     </div>

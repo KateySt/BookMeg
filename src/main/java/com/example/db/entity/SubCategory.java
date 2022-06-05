@@ -26,8 +26,8 @@ public class SubCategory implements Serializable {
     @Column(name = "sub_category")
     private String subCategory;
 
-    @ManyToMany(mappedBy = "subAndCategories")
-    private List<Book> bookSubAndCategories = new ArrayList<>();
+    @ManyToMany(mappedBy = "subCategories")
+    private List<Book> bookSubCategories = new ArrayList<>();
 
     public SubCategory(String subCategory) {
         this.subCategory = subCategory;
@@ -35,4 +35,9 @@ public class SubCategory implements Serializable {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_category",insertable = false, updatable = false)
     private Category category;
+
+    @Override
+    public String toString() {
+        return  subCategory;
+    }
 }

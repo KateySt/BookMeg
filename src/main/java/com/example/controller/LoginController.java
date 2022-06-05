@@ -1,9 +1,7 @@
 package com.example.controller;
 
-import com.example.db.entity.Role;
 import com.example.db.entity.User;
 import com.example.db.repositories.UserRepository;
-import org.hibernate.mapping.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,8 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -37,18 +34,16 @@ public class LoginController {
         return "index";
     }
 
-   /* @PostMapping("/login")
+    @PostMapping("/login")
     public String postLogin(User user, Map<String, Object> model) {
-        ArrayList<User> userRepositoryOne = new ArrayList<>(userRepository.findByName(user.getNameUser()));
-        if (userRepositoryOne == null) {
+        List<User> userRepositoryOne = userRepository.findByName(user.getNameUser());
+        if (userRepositoryOne == null || userRepositoryOne.isEmpty()) {
             return "createAccount";
         }
         user.setActive(true);
-        user.setRole(userRepository.findOne(2).getRole());
-        userRepository.save(user);
+        user.setRoles(userRepository.findOne(2).getRoles());
+        userRepository.create(user);
         return "index";
     }
 
-
-    */
 }

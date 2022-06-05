@@ -10,7 +10,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Entity
 @Getter
 @Setter
@@ -42,4 +41,8 @@ public class Category implements Serializable{
         subCategories.remove(subCategory);
     }
 
+    @Override
+    public String toString() {
+        return  category;
+    }
 }

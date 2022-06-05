@@ -6,11 +6,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.jms.annotation.EnableJms;
+
 
 @SpringBootApplication
 @ComponentScan("com.example")
+@EnableJms
 public class BookmegApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(BookmegApplication.class);
 	}

@@ -37,4 +37,8 @@ public class Vendor implements Serializable {
         this.phone=phone;
     }
 
+    @Override
+    public String toString() {
+        return "Vendor" + "nameVendor='" + nameVendor  + ", surnameVendor='" + surnameVendor  + ", phone='" + phone;
+    }
 }

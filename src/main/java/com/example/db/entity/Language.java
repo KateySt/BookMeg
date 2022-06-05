@@ -3,7 +3,6 @@ package com.example.db.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -29,5 +28,10 @@ public class Language implements Serializable{
 
     public Language(String language){
         this.language=language;
+    }
+
+    @Override
+    public String toString() {
+        return language;
     }
 }

@@ -53,7 +53,7 @@ public class Book implements Serializable {
     @JoinTable(name = "book_sub_category",
             joinColumns = { @JoinColumn(name = "id_book") },
             inverseJoinColumns = { @JoinColumn(name = "id_sub_category") })
-    private List<SubCategory> subAndCategories = new ArrayList<>();
+    private List<SubCategory> subCategories = new ArrayList<>();
 
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(name = "book_image",
@@ -121,15 +121,15 @@ public class Book implements Serializable {
         image.getBookImages().remove(this);
     }
     @Transactional
-    public void addSubAndCategory(SubCategory subCategory) {
-        subAndCategories.add(subCategory);
-        subCategory.getBookSubAndCategories().add(this);
+    public void addSubCategory(SubCategory subCategory) {
+        subCategories.add(subCategory);
+        subCategory.getBookSubCategories().add(this);
     }
 
     @Transactional
-    public void removeSubAndCategory(SubCategory subCategory) {
-        subAndCategories.remove(subCategory);
-        subCategory.getBookSubAndCategories().remove(this);
+    public void removeSubCategory(SubCategory subCategory) {
+        subCategories.remove(subCategory);
+        subCategory.getBookSubCategories().remove(this);
     }
     @Transactional
     public void addVendor(Vendor vendor) {

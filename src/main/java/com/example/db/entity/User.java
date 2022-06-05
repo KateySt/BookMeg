@@ -3,7 +3,6 @@ package com.example.db.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -31,9 +30,11 @@ public class User implements Serializable {
     @Column(name = "active")
     private Boolean active;
 
-    @ManyToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "id_role")
-     private Role role;
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(name = "user_role",
+            joinColumns = { @JoinColumn(name = "id_user") },
+            inverseJoinColumns = { @JoinColumn(name = "id_role") })
+    private List<Role> roles = new ArrayList<>();
 
 
     @ManyToMany(mappedBy = "users")
@@ -50,4 +51,5 @@ public class User implements Serializable {
         this.nameUser=nameUser;
         this.userPassword=userPassword;
     }
+
 }
