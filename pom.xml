@@ -43,32 +43,16 @@
         <deps.spring-boot-starter-security.version>2.5.4</deps.spring-boot-starter-security.version>
         <deps.spring-security-oauth2-authorization-server.version>0.2.0
         </deps.spring-security-oauth2-authorization-server.version>
+        <deps.spring-security-core.version>5.3.3.RELEASE</deps.spring-security-core.version>
+
         <deps.spring-jms.version>5.3.20</deps.spring-jms.version>
-        <!--
-         <deps.jaxb-api.version>2.3.1</deps.jaxb-api.version>
-        <deps.jaxb-runtime.version>2.3.1</deps.jaxb-runtime.version>
-         <deps.spring-tx.version>5.3.19</deps.spring-tx.version>
-        -->
+
 
         <deps.spring-boot-maven-plugin.version>2.6.4</deps.spring-boot-maven-plugin.version>
 
     </properties>
 
     <dependencies>
-
-        <!-- javax
-        <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>${deps.jaxb-api.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.glassfish.jaxb</groupId>
-            <artifactId>jaxb-runtime</artifactId>
-            <version>${deps.jaxb-runtime.version}</version>
-        </dependency>
-         javax -->
 
         <!-- html thymeleaf jquery bootstrap -->
         <dependency>
@@ -152,9 +136,11 @@
             <type>pom</type>
         </dependency>
         <!-- hibernate -->
+
         <!--cache -->
 
         <!--cache -->
+
         <!--mysql jdbc-->
         <dependency>
             <groupId>mysql</groupId>
@@ -176,6 +162,7 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <!--mysql jdbc-->
+
         <!--transaction-->
         <dependency>
             <groupId>javax.transaction</groupId>
@@ -183,6 +170,7 @@
             <version>${deps.jta.version}</version>
         </dependency>
         <!--transaction-->
+
         <!-- Apache Common DBCP2  -->
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -220,6 +208,11 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>${deps.spring-security-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
             <version>${deps.spring-security-web.version}</version>
         </dependency>
@@ -251,7 +244,6 @@
             <artifactId>spring-jms</artifactId>
             <version>${deps.spring-jms.version}</version>
         </dependency>
-
         <!--ActiveMQ  jms-->
 
         <!--configuration-->

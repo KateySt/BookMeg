@@ -5,11 +5,13 @@ import org.assertj.core.util.Preconditions;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 
-
+@Transactional
 public abstract class AbstractHibernateDAO<T extends Serializable> {
 
     private Class<T> clazz;
@@ -60,14 +62,20 @@ public abstract class AbstractHibernateDAO<T extends Serializable> {
     }
 
 
-    public List<T> findByName(String name){
+    public Optional<T> findByName(String name){
         Session session = getCurrentSession();
         Transaction tx1 = session.beginTransaction();
         Query query = session.createQuery("from User u where u.nameUser= :user_name");
         query.setParameter("user_name", name);
-        return query.list();
+        return query.uniqueResultOptional();
     }
-
+    public Optional<T> findByEmail(String email){
+        Session session = getCurrentSession();
+        Transaction tx1 = session.beginTransaction();
+        Query query = session.createQuery("from User u where u.userEmail= :user_email");
+        query.setParameter("user_email", email);
+        return query.uniqueResultOptional();
+    }
 
     public List<T> findByTitle(String title){
         Session session = getCurrentSession();

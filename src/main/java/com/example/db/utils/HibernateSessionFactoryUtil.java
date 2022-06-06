@@ -1,5 +1,7 @@
 package com.example.db.utils;
 
+import com.example.db.entity.User;
+import com.example.db.repositories.UserRepository;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
@@ -7,6 +9,8 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
+
+import java.util.List;
 
 
 public class HibernateSessionFactoryUtil {
@@ -26,11 +30,6 @@ public class HibernateSessionFactoryUtil {
             // handle the exception
         }
         return sessionFactory;
-    }
-    @Autowired
-    @Bean(name = "transactionManager")
-    public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {
-        return new HibernateTransactionManager(sessionFactory);
     }
 
 }
