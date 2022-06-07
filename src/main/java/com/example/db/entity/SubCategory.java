@@ -32,6 +32,7 @@ public class SubCategory implements Serializable {
     public SubCategory(String subCategory) {
         this.subCategory = subCategory;
     }
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_category",insertable = false, updatable = false)
     private Category category;
