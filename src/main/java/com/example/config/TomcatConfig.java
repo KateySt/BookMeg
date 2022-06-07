@@ -5,32 +5,7 @@ import org.springframework.boot.web.server.WebServerFactoryCustomizer;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-TomcatConfig implements WebServerFactoryCustomizer<TomcatServletWebServerFactory> {
-
-
-
-    
+public class TomcatConfig implements WebServerFactoryCustomizer<TomcatServletWebServerFactory> {
 
     @Override
     public void customize(TomcatServletWebServerFactory factory) {

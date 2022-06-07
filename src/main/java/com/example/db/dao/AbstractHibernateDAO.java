@@ -62,24 +62,23 @@ public abstract class AbstractHibernateDAO<T extends Serializable> {
     }
 
 
-    public Optional<T> findByName(String name){
+    public Optional<T> findByName(String name) {
         Session session = getCurrentSession();
-        Transaction tx1 = session.beginTransaction();
         Query query = session.createQuery("from User u where u.nameUser= :user_name");
         query.setParameter("user_name", name);
         return query.uniqueResultOptional();
     }
-    public Optional<T> findByEmail(String email){
+
+    public Optional<T> findByEmail(String email) {
         Session session = getCurrentSession();
-        Transaction tx1 = session.beginTransaction();
+        //Transaction tx1 = session.beginTransaction();
         Query query = session.createQuery("from User u where u.userEmail= :user_email");
         query.setParameter("user_email", email);
         return query.uniqueResultOptional();
     }
 
-    public List<T> findByTitle(String title){
+    public List<T> findByTitle(String title) {
         Session session = getCurrentSession();
-        Transaction tx1 = session.beginTransaction();
         Query query = session.createQuery("from Book b where b.bookName= :book_name");
         query.setParameter("book_name", title);
         return query.list();

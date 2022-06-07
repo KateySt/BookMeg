@@ -40,7 +40,8 @@ public class User implements Serializable {
     @ManyToMany(mappedBy = "users")
     private List<Book> bookUsers = new ArrayList<>();
 
-    public User(String nameUser,String userEmail, String userPhone,String userPassword) {
+    public User(Boolean active,String nameUser, String userPhone,String userEmail,String userPassword) {
+        this.active=active;
         this.nameUser=nameUser;
         this.userEmail=userEmail;
         this.userPhone=userPhone;

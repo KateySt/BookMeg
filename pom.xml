@@ -39,11 +39,11 @@
         <deps.tomcat-embed-jasper.version>9.0.44</deps.tomcat-embed-jasper.version>
 
         <deps.spring-security-web.version>5.6.0</deps.spring-security-web.version>
-        <deps.spring-security-web.version>5.6.0</deps.spring-security-web.version>
+        <deps.spring-security-config.version>5.6.0</deps.spring-security-config.version>
         <deps.spring-boot-starter-security.version>2.5.4</deps.spring-boot-starter-security.version>
         <deps.spring-security-oauth2-authorization-server.version>0.2.0
         </deps.spring-security-oauth2-authorization-server.version>
-        <deps.spring-security-core.version>5.3.3.RELEASE</deps.spring-security-core.version>
+
 
         <deps.spring-jms.version>5.3.20</deps.spring-jms.version>
 
@@ -84,6 +84,7 @@
             <artifactId>bootstrap-select</artifactId>
             <version>${deps.bootstrap-select.version}</version>
         </dependency>
+
         <!-- html thymeleaf jquery bootstrap -->
 
         <!-- spring web -->
@@ -208,13 +209,8 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-core</artifactId>
-            <version>${deps.spring-security-core.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
-            <version>${deps.spring-security-web.version}</version>
+            <version>${deps.spring-security-config.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

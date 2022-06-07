@@ -21,7 +21,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    UserDetailsService userDetailsService;
+    private UserDetailsService userDetailsService;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -43,11 +43,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     protected void configure(HttpSecurity http) throws Exception {
-        http    .csrf()
+        http    .authorizeRequests()
+                .antMatchers( "/index", "/login/creatAccount","/library","/library/**","/author","/category").permitAll()
+                .and()
+                .logout()
+                .deleteCookies("remember-me")
+                .permitAll()
+                .and()
+                .rememberMe()
+                .and()
+                .exceptionHandling();
+
+      }
+         /*       .csrf()
                     .disable()
                 .authorizeRequests()
                     .antMatchers( "/index", "/login/creatAccount").permitAll()
-                    .antMatchers("/admin/**").hasAnyRole("ADMIN")
+                    .antMatchers("/user","/user/**").hasAnyRole("ADMIN")
                     .antMatchers("/library","/library/**").hasAnyRole("USER")
                     .anyRequest().authenticated()
                     .and()
@@ -56,7 +68,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .loginPage("/login").permitAll()
                     .defaultSuccessUrl("/index").permitAll()
                     .and()
-                .logout().permitAll();
-    }
+                .logout()
+                    .deleteCookies("remember-me")
+                    .permitAll()
+                    .and()
+                .rememberMe()
+                    .and()
+                .exceptionHandling();
+
+         */
+
 
 }
