@@ -34,7 +34,7 @@ public class SubCategory implements Serializable {
     }
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_category",insertable = false, updatable = false)
+    @JoinColumn(name = "id_category")
     private Category category;
 
     @Override

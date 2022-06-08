@@ -45,14 +45,14 @@ public class CategoryController {
         }
         Set<Book> bookSet = new HashSet<>(books);
         model.addAttribute("book", bookSet);
-        return "bookCategory";
+        return "searchBookBy";
     }
     @GetMapping("/sub-category/{subCategoryId}")
     public String searchBySubCategoryLibraryBook(@PathVariable(value = "subCategoryId") Integer subCategoryId, Model model) {
         SubCategory subCategories = subCategoryRepository.findOne(subCategoryId);
         List<Book> books = subCategories.getBookSubCategories();
         model.addAttribute("book", books);
-        return "bookCategory";
+        return "searchBookBy";
     }
     @GetMapping("/author/{authorId}")
     public String searchByAuthorLibraryBook(@PathVariable(value = "authorId") Integer authorId, Model model) {
@@ -60,6 +60,6 @@ public class CategoryController {
         List<Book> books = author.getBookAuthors();
         model.addAttribute("book", books);
         model.addAttribute("authors", author);
-        return "bookCategory";
+        return "searchBookBy";
     }
 }

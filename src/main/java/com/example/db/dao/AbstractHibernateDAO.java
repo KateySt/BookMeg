@@ -1,5 +1,6 @@
 package com.example.db.dao;
 
+import com.example.db.entity.Role;
 import com.example.db.entity.SubCategory;
 import com.example.db.utils.HibernateSessionFactoryUtil;
 import org.assertj.core.util.Preconditions;
@@ -61,7 +62,6 @@ public abstract class AbstractHibernateDAO<T extends Serializable> {
         Preconditions.checkNotNull(entity);
         delete(entity);
     }
-
 
     public Optional<T> findByName(String name) {
         Session session = getCurrentSession();
