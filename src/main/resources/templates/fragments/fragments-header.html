@@ -11,13 +11,12 @@
             });
         });
     </script>
-    <nav class="container d-flex flex-column flex-md-row justify-content-between">
+    <nav class="container d-flex flex-column flex-md-row justify-content-between ">
         <a class="py-2" href="/index" aria-label="Product">
             <a href="/index" class="navbar-brand">BookMeg</a>
         </a>
         <a th:text="#{a.library}" class="py-2 d-none d-md-inline-block" href="/library"></a>
-        <a th:text="#{a.category}" class="py-2 d-none d-md-inline-block" href="/category"></a>
-        <a th:text="#{a.author}" class="py-2 d-none d-md-inline-block" href="/author"></a>
+        <a th:text="#{a.search}" class="py-2 d-none d-md-inline-block" href="/search"></a>
         <a th:text="#{a.login}" class="py-2 d-none d-md-inline-block" href="/login"></a>
         <a th:text="#{a.basket}" class="py-2 d-none d-md-inline-block" href="/basket"></a>
             <select id="locales" class="shadow-s p-2 mb-4 bg-white rounded" style="border: none">

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en"
+      data-layout-decorate="~{fragments/layout}"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>BookMeg</title>
+
+</head>
+<body>
+<main data-layout-fragment="content">
+    <h3>Category :</h3>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 m-3">
+        <div th:each="categories_el:${categories}" class="btn-outline-dark">
+            <a th:href="'/category/'+${categories_el.categoryId}" th:text="${categories_el.category}" type="button" class="btn btn-outline-dark"></a>
+        </div>
+    </div>
+    <h3>Subcategory :</h3>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 m-3">
+        <div th:each="subCategories_el:${subCategories}" class="btn-outline-dark">
+            <a th:text="${subCategories_el.subCategory}" th:href="'/sub-category/'+${subCategories_el.subCategoryId}" type="button" class="btn btn-outline-dark" ></a>
+        </div>
+    </div>
+    <h3>Author :</h3>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 m-3">
+        <div th:each="authors_el:${authors}" class="btn-outline-dark">
+            <a th:text="${authors_el.nameAuthor}+' '+ ${authors_el.surnameAuthor}" th:href="'/author/'+${authors_el.authorId}" type="button" class="btn btn-outline-dark" ></a>
+        </div>
+    </div>
+</main>
+</body>
+</html>

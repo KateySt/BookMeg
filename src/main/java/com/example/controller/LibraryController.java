@@ -26,12 +26,12 @@ public class LibraryController {
 
     @GetMapping("/library/{bookId}")
     public String libraryBook(@PathVariable(value = "bookId") Integer bookId, Model model) {
-        Book book=bookRepository.findOne(bookId);
-        List<SubCategory> subCategories= book.getSubCategories();
-        Category categories=subCategories.get(0).getCategory();
+        Book book = bookRepository.findOne(bookId);
+        List<SubCategory> subCategories = book.getSubCategories();
+        Category category = subCategories.get(0).getCategory();
         model.addAttribute("book", book);
         model.addAttribute("subCategory", subCategories);
-        model.addAttribute("category", categories);
+        model.addAttribute("category", category);
         return "book";
     }
 

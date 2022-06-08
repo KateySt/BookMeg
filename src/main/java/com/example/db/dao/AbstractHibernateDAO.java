@@ -1,5 +1,6 @@
 package com.example.db.dao;
 
+import com.example.db.entity.SubCategory;
 import com.example.db.utils.HibernateSessionFactoryUtil;
 import org.assertj.core.util.Preconditions;
 import org.hibernate.Session;
@@ -71,7 +72,6 @@ public abstract class AbstractHibernateDAO<T extends Serializable> {
 
     public Optional<T> findByEmail(String email) {
         Session session = getCurrentSession();
-        //Transaction tx1 = session.beginTransaction();
         Query query = session.createQuery("from User u where u.userEmail= :user_email");
         query.setParameter("user_email", email);
         return query.uniqueResultOptional();

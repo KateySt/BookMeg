@@ -43,15 +43,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     protected void configure(HttpSecurity http) throws Exception {
-        http    .authorizeRequests()
-                .antMatchers( "/index", "/login/creatAccount","/library","/library/**","/author","/category").permitAll()
-                .and()
+        http    .csrf()
+                    .disable()
+                .authorizeRequests()
+                    .antMatchers( "/index", "/login/creatAccount","/library","/library/**","/author","/category").permitAll()
+                    .and()
                 .logout()
-                .deleteCookies("remember-me")
-                .permitAll()
-                .and()
+                    .deleteCookies("remember-me")
+                    .permitAll()
+                    .and()
                 .rememberMe()
-                .and()
+                    .and()
                 .exceptionHandling();
 
       }
@@ -64,7 +66,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()
-                    .successHandler(new RefererAuthenticationSuccessHandler())
                     .loginPage("/login").permitAll()
                     .defaultSuccessUrl("/index").permitAll()
                     .and()
