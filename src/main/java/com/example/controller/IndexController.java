@@ -12,4 +12,8 @@ public class IndexController {
         //model.addAttribute("name", name);
         return "index";
     }
+    @GetMapping("/")
+    public String getStartPage( Model model) {
+        return "index";
+    }
 }

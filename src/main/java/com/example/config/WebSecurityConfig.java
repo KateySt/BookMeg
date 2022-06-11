@@ -107,16 +107,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         UserInfoTokenServices tokenServices = new UserInfoTokenServices(googleResource().getUserInfoUri(), google().getClientId());
         tokenServices.setRestTemplate(googleTemplate);
         googleFilter.setTokenServices(tokenServices);
-/*
-        OAuth2ClientAuthenticationProcessingFilter facebookFilter = new OAuth2ClientAuthenticationProcessingFilter("/connect/facebook");
-        OAuth2RestTemplate facebookTemplate = new OAuth2RestTemplate(facebook(), oauth2ClientContext);
-        facebookFilter.setRestTemplate(facebookTemplate);
-        tokenServices = new UserInfoTokenServices(facebookResource().getUserInfoUri(), facebook().getClientId());
-        tokenServices.setRestTemplate(facebookTemplate);
-        facebookFilter.setTokenServices(tokenServices);
-
-        filters.add(facebookFilter);
-*/
 
         filters.add(googleFilter);
 
@@ -146,39 +136,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new ResourceServerProperties();
     }
 
-/*
-    @Bean
-    @ConfigurationProperties("facebook.client")
-    public AuthorizationCodeResourceDetails facebook() {
-        return new AuthorizationCodeResourceDetails();
-    }
-
-    @Bean
-    @ConfigurationProperties("facebook.resource")
-    public ResourceServerProperties facebookResource() {
-        return new ResourceServerProperties();
-    }
-
-    */
-         /*       .csrf()
-                    .disable()
-                .authorizeRequests()
-                    .antMatchers( "/index", "/login/creatAccount").permitAll()
-                    .antMatchers("/user","/user/**").hasAnyRole("ADMIN")
-                    .antMatchers("/library","/library/**").hasAnyRole("USER")
-                    .anyRequest().authenticated()
-                    .and()
-                .formLogin()
-                    .loginPage("/login").permitAll()
-                    .defaultSuccessUrl("/index").permitAll()
-                    .and()
-                .logout()
-                    .deleteCookies("remember-me")
-                    .permitAll()
-                    .and()
-                .rememberMe()
-                    .and()
-                .exceptionHandling();
-
-         */
 }
