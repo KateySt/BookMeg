@@ -9,4 +9,5 @@ public class BookRepository extends AbstractHibernateDAO<Book> {
     public BookRepository(){
         setClazz(Book.class );
     }
+
 }

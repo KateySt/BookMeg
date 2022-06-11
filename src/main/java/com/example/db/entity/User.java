@@ -48,7 +48,12 @@ public class User implements Serializable {
         this.userPhone = userPhone;
         this.userPassword = userPassword;
     }
-
+    public User(Boolean active, String nameUser, String userEmail, String userPassword) {
+        this.active = active;
+        this.nameUser = nameUser;
+        this.userEmail = userEmail;
+        this.userPassword = userPassword;
+    }
     public User(String nameUser, String userPassword) {
         this.nameUser = nameUser;
         this.userPassword = userPassword;
