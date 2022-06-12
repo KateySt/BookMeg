@@ -2,6 +2,7 @@ package com.example.db.service;
 
 import com.example.db.entity.Role;
 import com.example.db.entity.User;
+import com.example.db.repositories.RoleRepository;
 import com.example.db.repositories.UserRepository;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -37,6 +38,7 @@ public class CustomUserInfoTokenServices implements ResourceServerTokenServices 
     private AuthoritiesExtractor authoritiesExtractor = new FixedAuthoritiesExtractor();
     private PrincipalExtractor principalExtractor = new FixedPrincipalExtractor();
     private UserRepository userRepository = new UserRepository();
+    private RoleRepository roleRepository=new RoleRepository();
 
     public CustomUserInfoTokenServices(String userInfoEndpointUrl, String clientId) {
         this.userInfoEndpointUrl = userInfoEndpointUrl;
@@ -70,10 +72,13 @@ public class CustomUserInfoTokenServices implements ResourceServerTokenServices 
         if (map.containsKey("sub")) {
             String googleName = (String) map.get("name");
             String googleUsername = (String) map.get("email");
-
-            User user = new User(true, googleName, googleUsername, passUserOAuth(googleUsername));
-            userRepository.save(user);
-
+            Optional<User> user = userRepository.findByName(googleName);
+            if (!(user.isPresent())) {
+                User users = new User(true, googleName, googleUsername, passUserOAuth(googleUsername));
+                userRepository.save(users);
+                users.addRole(roleRepository.findOne(1));
+                userRepository.update(users);
+            }
         }
         if (map.containsKey("error")) {
             if (this.logger.isDebugEnabled()) {

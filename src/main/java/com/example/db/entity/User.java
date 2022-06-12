@@ -37,7 +37,6 @@ public class User implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "id_role")})
     private List<Role> roles = new ArrayList<>();
 
-
     @ManyToMany(mappedBy = "users")
     private List<Book> bookUsers = new ArrayList<>();
 

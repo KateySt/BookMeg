@@ -36,7 +36,11 @@ public abstract class AbstractHibernateDAO<T extends Serializable> {
 
     public void create(final T entity) {
         Preconditions.checkNotNull(entity);
-        getCurrentSession().saveOrUpdate(entity);
+        Session session = getCurrentSession();
+        Transaction tx1 = session.beginTransaction();
+        session.saveOrUpdate(entity);
+        tx1.commit();
+        session.close();
     }
 
     public void save(final T object) {
@@ -49,7 +53,8 @@ public abstract class AbstractHibernateDAO<T extends Serializable> {
 
     public T update(final T entity) {
         Preconditions.checkNotNull(entity);
-        return (T) getCurrentSession().merge(entity);
+       return (T) getCurrentSession().merge(entity);
+
     }
 
     public void delete(final T entity) {
@@ -61,27 +66,6 @@ public abstract class AbstractHibernateDAO<T extends Serializable> {
         final T entity = findOne(entityId);
         Preconditions.checkNotNull(entity);
         delete(entity);
-    }
-
-    public Optional<T> findByName(String name) {
-        Session session = getCurrentSession();
-        Query query = session.createQuery("from User u where u.nameUser= :user_name");
-        query.setParameter("user_name", name);
-        return query.uniqueResultOptional();
-    }
-
-    public Optional<T> findByEmail(String email) {
-        Session session = getCurrentSession();
-        Query query = session.createQuery("from User u where u.userEmail= :user_email");
-        query.setParameter("user_email", email);
-        return query.uniqueResultOptional();
-    }
-
-    public List<T> findByTitle(String title) {
-        Session session = getCurrentSession();
-        Query query = session.createQuery("from Book b where b.bookName= :book_name");
-        query.setParameter("book_name", title);
-        return query.list();
     }
 
 }
