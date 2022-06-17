@@ -31,7 +31,7 @@ public class User implements Serializable {
     @Column(name = "active")
     private Boolean active;
 
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_role",
             joinColumns = {@JoinColumn(name = "id_user")},
             inverseJoinColumns = {@JoinColumn(name = "id_role")})
@@ -47,12 +47,14 @@ public class User implements Serializable {
         this.userPhone = userPhone;
         this.userPassword = userPassword;
     }
+
     public User(Boolean active, String nameUser, String userEmail, String userPassword) {
         this.active = active;
         this.nameUser = nameUser;
         this.userEmail = userEmail;
         this.userPassword = userPassword;
     }
+
     public User(String nameUser, String userPassword) {
         this.nameUser = nameUser;
         this.userPassword = userPassword;

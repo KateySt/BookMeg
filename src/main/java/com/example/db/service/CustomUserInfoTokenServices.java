@@ -6,6 +6,8 @@ import com.example.db.repositories.RoleRepository;
 import com.example.db.repositories.UserRepository;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.collection.internal.PersistentList;
+import org.hibernate.collection.internal.PersistentSet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.AuthoritiesExtractor;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.FixedAuthoritiesExtractor;
@@ -38,7 +40,6 @@ public class CustomUserInfoTokenServices implements ResourceServerTokenServices 
     private AuthoritiesExtractor authoritiesExtractor = new FixedAuthoritiesExtractor();
     private PrincipalExtractor principalExtractor = new FixedPrincipalExtractor();
     private UserRepository userRepository = new UserRepository();
-    private RoleRepository roleRepository=new RoleRepository();
 
     public CustomUserInfoTokenServices(String userInfoEndpointUrl, String clientId) {
         this.userInfoEndpointUrl = userInfoEndpointUrl;
@@ -73,11 +74,10 @@ public class CustomUserInfoTokenServices implements ResourceServerTokenServices 
             String googleName = (String) map.get("name");
             String googleUsername = (String) map.get("email");
             Optional<User> user = userRepository.findByName(googleName);
-            if (!(user.isPresent())) {
+            if (user.isEmpty()) {
                 User users = new User(true, googleName, googleUsername, passUserOAuth(googleUsername));
+                users.addRole(userRepository.findOne(2).getRoles().get(0));
                 userRepository.save(users);
-                users.addRole(roleRepository.findOne(1));
-                userRepository.update(users);
             }
         }
         if (map.containsKey("error")) {
