@@ -15,14 +15,13 @@
         <property name = "spring.jpa.database">mysql</property>
         <property name="hibernate.enable_lazy_load_no_trans">true</property>
 
-        <mapping class="com.example.db.entity.Book"/>
-        <mapping class="com.example.db.entity.Role"/>
-        <mapping class="com.example.db.entity.Vendor"/>
         <mapping class="com.example.db.entity.Author"/>
-        <mapping class="com.example.db.entity.SubCategory"/>
+        <mapping class="com.example.db.entity.Book"/>
         <mapping class="com.example.db.entity.Category"/>
         <mapping class="com.example.db.entity.Image"/>
         <mapping class="com.example.db.entity.Language"/>
+        <mapping class="com.example.db.entity.Role"/>
+        <mapping class="com.example.db.entity.SubCategory"/>
         <mapping class="com.example.db.entity.User"/>
 
     </session-factory>
