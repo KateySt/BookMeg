@@ -4,12 +4,16 @@ import com.example.db.entity.Book;
 import com.example.db.entity.Category;
 import com.example.db.entity.SubCategory;
 import com.example.db.repositories.BookRepository;
+import com.example.db.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.sql.Date;
 import java.util.List;
 
 
@@ -17,6 +21,8 @@ import java.util.List;
 public class LibraryController {
     @Autowired
     private BookRepository bookRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping("/library")
     public String getLibraryPage(Model model) {
@@ -40,5 +46,18 @@ public class LibraryController {
     public String libraryBookDelete(@PathVariable(value = "bookId") Integer bookId, Model model) {
         //bookRepository.deleteById(bookId);
         return "book";
+    }
+
+    @GetMapping("/add-book")
+    public String getAddBook(Model model) {
+        return "addBook";
+    }
+
+    @PostMapping("/add-book")
+    public String addBook(@RequestParam String bookName, @RequestParam Double costBook, @RequestParam Integer numPages, @RequestParam Date produceYear, Model model) {
+        Book book = new Book(bookName,costBook,numPages,produceYear);
+        //book.addUser(userRepository.findOne(userId));
+        bookRepository.save(book);
+        return "index";
     }
 }
