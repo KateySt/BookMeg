@@ -1,8 +1,7 @@
 package com.example.db.entity;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,8 +10,7 @@ import java.util.List;
 
 
 @Entity
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @Table(name="language")
 public class Language implements Serializable{

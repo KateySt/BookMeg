@@ -34,7 +34,7 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String postLogin(User user, Model model) {
+    public String postLogin(Model model) {
         return "index";
     }
 

@@ -1,12 +1,9 @@
 package com.example.config;
 
-import javax.servlet.Filter;
-
 import com.example.db.service.CustomUserInfoTokenServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.ResourceServerProperties;
-import org.springframework.boot.autoconfigure.security.oauth2.resource.UserInfoTokenServices;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -31,6 +28,7 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.web.context.request.RequestContextListener;
 import org.springframework.web.filter.CompositeFilter;
 
+import javax.servlet.Filter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,7 +37,7 @@ import java.util.List;
 @EnableOAuth2Client
 @EnableWebSecurity
 @Order(1000)
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Qualifier("oauth2ClientContext")
     @Autowired
@@ -74,22 +72,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatcher("/**")
                     .addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class)
                 .authorizeRequests()
-                    .antMatchers("/index", "/login/creatAccount", "/library", "/library/**", "/author", "/category").permitAll()
+                    .antMatchers("/index/**", "/login/**").permitAll()
+                    .antMatchers( "/library/**", "/author/**", "/category/**", "/sub-category/**").hasRole("USER")
+                    .antMatchers("/users").hasRole("ADMIN")
                     .and()
                 .formLogin()
                     .loginPage("/login").permitAll()
                     .defaultSuccessUrl("/index")
+                    .failureUrl("/login?error=true")
                     .and()
                 .logout()
-                    .deleteCookies("remember-me").permitAll()
+                    .logoutSuccessUrl("/index")
+                    .invalidateHttpSession(true)
+                    .deleteCookies("JSESSIONID")
                     .and()
-                .rememberMe()
-                    .and()
+                //.rememberMe()
+                   // .and()
                 .csrf()
                     .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                     .and()
                 .exceptionHandling();
-
     }
 
     @Bean

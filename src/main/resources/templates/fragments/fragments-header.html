@@ -1,11 +1,12 @@
-<header data-th-fragment="header-content" class="site-header sticky-top py-1" xmlns="http://www.w3.org/1999/html">
+<header data-th-fragment="header-content" class="site-header sticky-top py-1" xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
     </script>
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
             $("#locales").change(function () {
                 var selectedOption = $('#locales').val();
-                if (selectedOption != ''){
+                if (selectedOption != '') {
                     window.location.replace('?lang=' + selectedOption);
                 }
             });
@@ -17,13 +18,25 @@
         </a>
         <a th:text="#{a.library}" class="py-2 d-none d-md-inline-block" href="/library"></a>
         <a th:text="#{a.search}" class="py-2 d-none d-md-inline-block" href="/search"></a>
-        <a th:text="#{a.login}" class="py-2 d-none d-md-inline-block" href="/login"></a>
-        <a th:text="#{a.basket}" class="py-2 d-none d-md-inline-block" href="/basket"></a>
-            <select id="locales" class="shadow-s p-2 mb-4 bg-white rounded" style="border: none">
-                <option value="">locale</option>
-                <option th:text="#{Lang.en}" value="en"></option>
-                <option th:text="#{Lang.de}" value="de"></option>
-                <option th:text="#{Lang.fr}" value="fr"></option>
-            </select>
+        <div sec:authorize="!isAuthenticated()">
+            <a th:text="#{a.login}" class="py-2 d-none d-md-inline-block" href="/login"></a>
+        </div>
+        <div sec:authorize="isAuthenticated()">
+            <form th:action="@{/logout}" method="post">
+                <input class="py-2 d-none d-md-inline-block" type="submit" value="logout"/>
+            </form>
+        </div>
+        <div sec:authorize="hasRole('USER')">
+            <a th:text="#{a.basket}" class="py-2 d-none d-md-inline-block" href="/basket"></a>
+        </div>
+        <div sec:authorize="hasRole('ADMIN')">
+            <a class="py-2 d-none d-md-inline-block" href="/users">Users</a>
+        </div>
+        <select id="locales" class="shadow-s p-2 mb-4 bg-white rounded" style="border: none">
+            <option value="">locale</option>
+            <option th:text="#{Lang.en}" value="en"></option>
+            <option th:text="#{Lang.de}" value="de"></option>
+            <option th:text="#{Lang.fr}" value="fr"></option>
+        </select>
     </nav>
 </header>

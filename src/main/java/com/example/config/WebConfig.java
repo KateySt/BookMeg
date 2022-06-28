@@ -56,11 +56,12 @@ public class WebConfig implements WebMvcConfigurer, ApplicationContextAware {
 
     @Bean
     public ISpringTemplateEngine templateEngine() {
-        var engine = new SpringTemplateEngine();
-        engine.setTemplateResolver(templateResolver());
-        engine.addDialect(new LayoutDialect());
-        engine.addDialect(new Java8TimeDialect());
-        return engine;
+        SpringTemplateEngine templateEngine = new SpringTemplateEngine();
+        templateEngine.setTemplateResolver(templateResolver());
+        templateEngine.addDialect(new LayoutDialect());
+        templateEngine.addDialect(new Java8TimeDialect());
+        templateEngine.addDialect(new SpringSecurityDialect());
+        return templateEngine;
     }
 
     private ITemplateResolver templateResolver() {

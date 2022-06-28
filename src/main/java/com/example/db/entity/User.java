@@ -1,8 +1,7 @@
 package com.example.db.entity;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
@@ -11,8 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @Table(name = "user")
 public class User implements Serializable {
@@ -55,11 +53,6 @@ public class User implements Serializable {
         this.userPassword = userPassword;
     }
 
-    public User(String nameUser, String userPassword) {
-        this.nameUser = nameUser;
-        this.userPassword = userPassword;
-    }
-
     @Transactional
     public void addRole(Role role) {
         roles.add(role);
@@ -71,4 +64,5 @@ public class User implements Serializable {
         roles.remove(role);
         role.getRoleUsers().remove(this);
     }
+
 }
