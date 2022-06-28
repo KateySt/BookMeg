@@ -3,21 +3,27 @@
       data-layout-decorate="~{fragments/layout}"
       xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>BookMeg</title>
 
 </head>
 <body>
 <main data-layout-fragment="content">
-    <h1 class="mb-3 m-3">Book</h1>
     <div th:each="books_el:${book}" class="alert alert-info mt-2">
         <h3 th:text="${books_el.bookName}" class="mb-3 m-3"></h3>
-        <p th:text="${books_el.costBook}" class="mb-3 m-3"></p>
-        <p th:text="${books_el.numPages}" class="mb-3 m-3"></p>
-        <p th:text="${books_el.produceYear}" class="mb-3 m-3"></p>
+        <p th:text="${books_el.costBook}+' $'" class="mb-3 m-3"></p>
+        <p th:text="${books_el.numPages}+' pages'" class="mb-3 m-3"></p>
+        <p th:text="${books_el.produceYear}+' year'" class="mb-3 m-3"></p>
+        <div th:each="sC:${subCategory}">
+            <p th:text="${sC.subCategory}" class="m-3"></p>
+        </div>
+        <div th:each="c:${category}">
+            <p th:text="${c.category}" class="mb-3 m-3"></p>
+        </div>
         <a th:href="'/library/'+${books_el.bookId}+'/edit'" class="btn btn-warning mb-3 m-3">Edit</a>
         <a th:href="'/library/'+${books_el.bookId}+'/remove'" class="btn btn-warning mb-3 m-3">Delete</a>
     </div>
+
 </main>
 </body>
 </html>

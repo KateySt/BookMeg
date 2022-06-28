@@ -38,34 +38,26 @@
         <deps.tomcat-dbcp.version>7.0.55</deps.tomcat-dbcp.version>
         <deps.tomcat-embed-jasper.version>9.0.44</deps.tomcat-embed-jasper.version>
 
-        <deps.spring-security-oauth2-authorization-server.version>0.2.0</deps.spring-security-oauth2-authorization-server.version>
-        <!--
-         <deps.jaxb-api.version>2.3.1</deps.jaxb-api.version>
-        <deps.jaxb-runtime.version>2.3.1</deps.jaxb-runtime.version>
-         <deps.spring-tx.version>5.3.19</deps.spring-tx.version>
-        -->
+        <deps.spring-security-web.version>5.6.0</deps.spring-security-web.version>
+        <deps.spring-security-config.version>5.6.0</deps.spring-security-config.version>
+        <deps.spring-boot-starter-security.version>2.5.4</deps.spring-boot-starter-security.version>
+        <deps.spring-security-oauth2-authorization-server.version>0.2.0
+        </deps.spring-security-oauth2-authorization-server.version>
+
+
+        <deps.spring-jms.version>5.3.20</deps.spring-jms.version>
+
 
         <deps.spring-boot-maven-plugin.version>2.6.4</deps.spring-boot-maven-plugin.version>
 
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
     <dependencies>
 
-        <!-- javax
-        <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>${deps.jaxb-api.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.glassfish.jaxb</groupId>
-            <artifactId>jaxb-runtime</artifactId>
-            <version>${deps.jaxb-runtime.version}</version>
-        </dependency>
-         javax -->
-
         <!-- html thymeleaf jquery bootstrap -->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -134,6 +126,7 @@
             <scope>runtime</scope>
         </dependency>
         <!-- SQL Service-->
+
         <!-- hibernate -->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -147,9 +140,11 @@
             <type>pom</type>
         </dependency>
         <!-- hibernate -->
+
         <!--cache -->
 
         <!--cache -->
+
         <!--mysql jdbc-->
         <dependency>
             <groupId>mysql</groupId>
@@ -171,6 +166,7 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <!--mysql jdbc-->
+
         <!--transaction-->
         <dependency>
             <groupId>javax.transaction</groupId>
@@ -178,6 +174,7 @@
             <version>${deps.jta.version}</version>
         </dependency>
         <!--transaction-->
+
         <!-- Apache Common DBCP2  -->
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -198,7 +195,7 @@
             <version>${deps.tomcat-embed-jasper.version}</version>
             <scope>provided</scope>
         </dependency>
-       <!-- tomcat-->
+        <!-- tomcat-->
 
         <!--rest-->
         <dependency>
@@ -207,18 +204,66 @@
         </dependency>
         <!--rest-->
 
-        <!--security
+        <!--security-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${deps.spring-security-web.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${deps.spring-security-config.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
+            <version>${deps.spring-boot-starter-security.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-oauth2-authorization-server</artifactId>
             <version>${deps.spring-security-oauth2-authorization-server.version}</version>
         </dependency>
-        security-->
 
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>webjars-locator-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security.oauth.boot</groupId>
+            <artifactId>spring-security-oauth2-autoconfigure</artifactId>
+            <version>2.1.3.RELEASE</version>
+        </dependency>
+        <!--security-->
+
+        <!--ActiveMQ jms-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-activemq</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jms</artifactId>
+            <version>${deps.spring-jms.version}</version>
+        </dependency>
+        <!--ActiveMQ  jms-->
 
         <!--configuration-->
         <dependency>

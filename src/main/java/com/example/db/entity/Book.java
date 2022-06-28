@@ -1,8 +1,7 @@
 package com.example.db.entity;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
@@ -12,8 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @Table(name="book")
 public class Book implements Serializable {
@@ -44,16 +42,10 @@ public class Book implements Serializable {
     private List<Language> languages = new ArrayList<>();
 
     @ManyToMany(cascade = {CascadeType.ALL})
-    @JoinTable(name = "book_vendor",
-            joinColumns = { @JoinColumn(name = "id_book") },
-            inverseJoinColumns = { @JoinColumn(name = "id_vendor") })
-    private List<Vendor> vendors = new ArrayList<>();
-
-    @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(name = "book_sub_category",
             joinColumns = { @JoinColumn(name = "id_book") },
             inverseJoinColumns = { @JoinColumn(name = "id_sub_category") })
-    private List<SubCategory> subAndCategories = new ArrayList<>();
+    private List<SubCategory> subCategories = new ArrayList<>();
 
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(name = "book_image",
@@ -121,25 +113,14 @@ public class Book implements Serializable {
         image.getBookImages().remove(this);
     }
     @Transactional
-    public void addSubAndCategory(SubCategory subCategory) {
-        subAndCategories.add(subCategory);
-        subCategory.getBookSubAndCategories().add(this);
+    public void addSubCategory(SubCategory subCategory) {
+        subCategories.add(subCategory);
+        subCategory.getBookSubCategories().add(this);
     }
 
     @Transactional
-    public void removeSubAndCategory(SubCategory subCategory) {
-        subAndCategories.remove(subCategory);
-        subCategory.getBookSubAndCategories().remove(this);
-    }
-    @Transactional
-    public void addVendor(Vendor vendor) {
-        vendors.add(vendor);
-        vendor.getBookVendors().add(this);
-    }
-
-    @Transactional
-    public void removeVendor(Vendor vendor) {
-        vendors.remove(vendor);
-        vendor.getBookVendors().remove(this);
+    public void removeSubCategory(SubCategory subCategory) {
+        subCategories.remove(subCategory);
+        subCategory.getBookSubCategories().remove(this);
     }
 }

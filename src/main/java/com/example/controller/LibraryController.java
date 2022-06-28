@@ -1,7 +1,8 @@
 package com.example.controller;
 
-import antlr.collections.List;
 import com.example.db.entity.Book;
+import com.example.db.entity.Category;
+import com.example.db.entity.SubCategory;
 import com.example.db.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,11 +10,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.List;
+
+
 @Controller
 public class LibraryController {
-
     @Autowired
-    BookRepository bookRepository;
+    private BookRepository bookRepository;
 
     @GetMapping("/library")
     public String getLibraryPage(Model model) {
@@ -24,12 +27,18 @@ public class LibraryController {
 
     @GetMapping("/library/{bookId}")
     public String libraryBook(@PathVariable(value = "bookId") Integer bookId, Model model) {
-        model.addAttribute("book", bookRepository.findOne(bookId));
+        Book book = bookRepository.findOne(bookId);
+        List<SubCategory> subCategories = book.getSubCategories();
+        Category category = subCategories.get(0).getCategory();
+        model.addAttribute("book", book);
+        model.addAttribute("subCategory", subCategories);
+        model.addAttribute("category", category);
         return "book";
     }
+
     @GetMapping("/library/{bookId}/delete")
     public String libraryBookDelete(@PathVariable(value = "bookId") Integer bookId, Model model) {
-        //model.addAttribute("book", bookRepository.delete());
+        //bookRepository.deleteById(bookId);
         return "book";
     }
 }

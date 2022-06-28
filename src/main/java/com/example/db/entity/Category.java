@@ -1,8 +1,7 @@
 package com.example.db.entity;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
@@ -10,10 +9,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Entity
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @Table(name="category")
 public class Category implements Serializable{
@@ -42,4 +39,8 @@ public class Category implements Serializable{
         subCategories.remove(subCategory);
     }
 
+    @Override
+    public String toString() {
+        return  category;
+    }
 }

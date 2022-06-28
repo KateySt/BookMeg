@@ -1,9 +1,7 @@
 package com.example.db.entity;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,8 +10,7 @@ import java.util.List;
 
 
 @Entity
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @Table(name="language")
 public class Language implements Serializable{
@@ -29,5 +26,10 @@ public class Language implements Serializable{
 
     public Language(String language){
         this.language=language;
+    }
+
+    @Override
+    public String toString() {
+        return language;
     }
 }

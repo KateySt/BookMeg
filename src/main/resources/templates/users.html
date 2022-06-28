@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en"
+      data-layout-decorate="~{fragments/layout}"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>BookMeg</title>
+
+</head>
+<body>
+<main data-layout-fragment="content">
+    <div th:each="users_el:${users}" class="alert alert-info mt-2">
+        <h3 th:text="${users_el.nameUser}" class="mb-3 m-3"></h3>
+        <p th:text="${users_el.userEmail}" class="mb-3 m-3"></p>
+        <p th:text="${users_el.userPhone}" class="mb-3 m-3"></p>
+        <p th:text="${users_el.getRoles().get(0).getRole()}" class="mb-3 m-3"></p>
+        <a th:href="'/users/'+${users_el.userId}+'/edit'" class="btn btn-warning mb-3 m-3">Edit</a>
+        <a th:href="'/users/'+${users_el.userId}+'/remove'" class="btn btn-warning mb-3 m-3">Delete</a>
+    </div>
+
+</main>
+</body>
+</html>

@@ -1,20 +1,19 @@
 package com.example.db.entity;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Entity
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @Table(name="role")
-public class Role {
+public class Role implements Serializable, GrantedAuthority {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "id_role")
@@ -22,10 +21,15 @@ public class Role {
     @Column(name = "role")
     private String role;
 
-    @OneToMany(mappedBy="role")
-    private List<User> comments = new ArrayList<>();
+    @ManyToMany(mappedBy = "roles")
+    private List<User> roleUsers = new ArrayList<>();
 
     public Role(String role){
         this.role=role;
+    }
+
+    @Override
+    public String getAuthority() {
+        return getRole();
     }
 }
