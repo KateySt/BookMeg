@@ -29,7 +29,7 @@
         <div sec:authorize="hasRole('USER')">
             <a th:text="#{a.basket}" class="py-2 d-none d-md-inline-block" href="/basket"></a>
         </div>
-        <div sec:authorize="hasRole('SALLER')and hasRole('USER')">
+        <div sec:authorize="hasAnyRole('SALLER','USER')">
             <a class="py-2 d-none d-md-inline-block" href="/add-book">Add book</a>
         </div>
         <div sec:authorize="hasRole('ADMIN')">

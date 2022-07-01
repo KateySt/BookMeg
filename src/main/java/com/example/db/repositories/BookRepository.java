@@ -18,6 +18,8 @@ public class BookRepository extends AbstractHibernateDAO<Book> {
         Session session = getCurrentSession();
         Query query = session.createQuery("from Book b where b.bookName= :book_name");
         query.setParameter("book_name", title);
-        return query.list();
+        List<Book> books = query.list();
+        session.close();
+        return books;
     }
 }

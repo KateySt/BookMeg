@@ -66,8 +66,8 @@ public abstract class AbstractHibernateDAO<T extends Serializable> implements Hi
         tx1.commit();
         session.close();
         return entity;
-
     }
+
     @Override
     public void persist(final T entity) {
         Preconditions.checkNotNull(entity);
