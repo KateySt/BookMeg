@@ -17,7 +17,6 @@
 
         <mapping class="com.example.db.entity.Book"/>
         <mapping class="com.example.db.entity.Role"/>
-        <mapping class="com.example.db.entity.Vendor"/>
         <mapping class="com.example.db.entity.Author"/>
         <mapping class="com.example.db.entity.SubCategory"/>
         <mapping class="com.example.db.entity.Category"/>
