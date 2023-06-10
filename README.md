@@ -1,11 +1,11 @@
 # BookMeg
 BookMeg
 <p align="center">
-      <img src="https://img.shields.io/endpoint?url=<URL>&style<STYLE>" width="726">
+      <img src="" width="726">
 </p>
 
 <p align="center">
-   <img src="" alt="Unity Version">
+   <img src="https://github.com/KateySt/BookMeg/blob/main/src/main/resources/img/index.jpg" alt="Main page">
    <img src="" alt="Game Version">
    <img src="" alt="License">
 </p>
